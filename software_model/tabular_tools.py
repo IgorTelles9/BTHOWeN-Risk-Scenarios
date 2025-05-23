@@ -298,6 +298,7 @@ def read_dataset(ds_name):
 
 
 def get_portfolio_dataset():
+    PARQUET_NAME = "portfolio.parquet"
     """
     Carrega os dados do portfólio diretamente do arquivo load_portfolio.py.
     """
@@ -319,9 +320,9 @@ def get_portfolio_dataset():
         if not hasattr(load_portfolio, "portfolio"):
             print("Carregando portfólio do arquivo...")
             # Se o portfólio não foi carregado no módulo, tentamos carregar aqui
-            portfolio_path = os.path.join(parent_dir, '..', 'portfolio.parquet')
+            portfolio_path = os.path.join(parent_dir, '..', PARQUET_NAME)
             if not os.path.exists(portfolio_path):
-                portfolio_path = os.path.join(parent_dir, 'portfolio.parquet')
+                portfolio_path = os.path.join(parent_dir, PARQUET_NAME)
             
             portfolio_df = pd.read_parquet(portfolio_path)
         else:

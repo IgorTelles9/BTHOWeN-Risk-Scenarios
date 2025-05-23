@@ -133,14 +133,13 @@ def read_arguments():
     parser.add_argument("--output", default=None, help="Caminho para salvar as predições (opcional)")
     
     return parser.parse_args()
-
 def main():
-    args = read_arguments()
+    # args = read_arguments()
     
     result = predict_portfolio_risk(
-        model_fname=args.model_path,
-        portfolio_file=args.portfolio,
-        bleach=args.bleach
+        model_fname='./models/portfolio/portfolio5.pickle.lzma',
+        portfolio_file='./portfolio.parquet',
+        bleach=1
     )
     
     if result is not None:
@@ -149,9 +148,8 @@ def main():
         print(result.head())
         
         # Salvar resultados, se solicitado
-        if args.output:
-            result.to_csv(args.output)
-            print(f"Resultados salvos em {args.output}")
+        result.to_csv('predict.csv')
+        print(f"Resultados salvos em predict.csv")
 
 if __name__ == "__main__":
     main() 

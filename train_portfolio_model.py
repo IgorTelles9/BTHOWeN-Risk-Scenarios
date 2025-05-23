@@ -12,17 +12,20 @@ from software_model.train_swept_models import create_models
 def read_arguments():
     parser = argparse.ArgumentParser(description="Treinar modelos BTHOWeN para previsão de risco no portfólio")
     
-    parser.add_argument("--filter_inputs", nargs="+", type=int, default=[8, 16],
+    parser.add_argument("--filter_inputs", nargs="+", type=int, default=[8],
                         help="Número de entradas para cada filtro Bloom (aceita múltiplos valores)")
     
-    parser.add_argument("--filter_entries", nargs="+", type=int, default=[64, 128, 256],
+    parser.add_argument("--filter_entries", nargs="+", type=int, default=[256],
                         help="Número de entradas em cada filtro Bloom (aceita múltiplos valores; deve ser potência de 2)")
     
-    parser.add_argument("--filter_hashes", nargs="+", type=int, default=[3, 5],
+    parser.add_argument("--filter_hashes", nargs="+", type=int, default=[5],
                         help="Número de funções hash distintas para cada filtro Bloom (aceita múltiplos valores)")
     
-    parser.add_argument("--bits_per_input", nargs="+", type=int, default=[4, 8],
+    parser.add_argument("--bits_per_input", nargs="+", type=int, default=[8],
                         help="Número de bits para codificação termométrica para cada entrada (aceita múltiplos valores)")
+
+    parser.add_argument("--save_prefix", nargs="+", type=str, default=['portfolio1'],
+                        help="Prefixo para salvar os modelos")
     
     return parser.parse_args()
 
@@ -39,7 +42,7 @@ def main():
         print(f"Executando treinamento com {bpi} bit(s) por entrada")
         create_models(
             'portfolio', args.filter_inputs, args.filter_entries, args.filter_hashes,
-            bpi, -1, "risk_model"
+            bpi, -1, args.save_prefix
         )
     
     print("\nTreinamento concluído! Os modelos estão salvos em ./models/portfolio/")

@@ -1,0 +1,6 @@
+{
+    "vim.handleKeys": {
+        "<C->":false
+    },
+    "vim.useCtrlKeys": false
+}
