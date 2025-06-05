@@ -46,6 +46,7 @@ def predict_portfolio_risk(model_fname, portfolio_df=None, portfolio_file=None, 
     print("Preparando dados para predição...")
     
     df = portfolio_df.copy()
+    df = df.drop(columns=['Date'])
     original_index = df.index
     
     # Salvar a coluna 'risk' atual para comparação posterior
@@ -137,7 +138,7 @@ def main():
     # args = read_arguments()
     
     result = predict_portfolio_risk(
-        model_fname='./models/portfolio/portfolio5.pickle.lzma',
+        model_fname='./models/portfolio/portfolio6.pickle.lzma',
         portfolio_file='./portfolio.parquet',
         bleach=1
     )

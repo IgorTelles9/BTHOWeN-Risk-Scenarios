@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import os
+from sklearn.model_selection import train_test_split
 
 # Preparar dados para BTHOWeN
 def prepare_data_for_bthowen(portfolio_df):
@@ -22,10 +23,8 @@ def prepare_data_for_bthowen(portfolio_df):
     # Criar lista de tuplas (features, label)
     dataset = [(features[i], labels[i]) for i in range(len(features))]
     
-    # Dividir em conjuntos de treino e teste 
-    split_idx = int(len(dataset) * 0.8)  # 80% treino, 20% teste
-    train_dataset = dataset[:split_idx]
-    test_dataset = dataset[split_idx:]
+    # Dividir em conjuntos de treino e teste de forma aleatória
+    train_dataset, test_dataset = train_test_split(dataset, test_size=0.2, random_state=42)
     
     print(f"Dataset preparado: {len(train_dataset)} amostras de treino, {len(test_dataset)} amostras de teste")
     print(f"Dimensão das features: {features.shape[1]}")
