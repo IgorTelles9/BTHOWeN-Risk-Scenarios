@@ -1,0 +1,3 @@
+Success: Results copied to iCloud Drive at 2025-06-05 19:45:23.363877
+Source: model_evaluation_results.csv
+Destination: C:\Users\Igor\iCloudDrive\bthowen\model_evaluation_results.csv
