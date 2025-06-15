@@ -1,9 +1,3 @@
-"""
-gera_metricas_e_graficos.py
-
-Uso:
-    python gera_metricas_e_graficos.py --csv model_evaluation_results_0.csv
-"""
 import argparse
 import os
 from pathlib import Path

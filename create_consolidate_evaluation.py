@@ -2,7 +2,7 @@ import os
 import glob
 import pandas as pd
 
-DATA_DIR = "./evaluations/finalizado/"  
+DATA_DIR = "./evaluations/generalist/"  
 
 # 1) Encontre todos os arquivos CSV que seguem o padrão
 csv_pattern = os.path.join(DATA_DIR, "model_evaluation_results_*.csv")

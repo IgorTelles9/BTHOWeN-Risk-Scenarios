@@ -12,9 +12,9 @@ import pandas as pd
 from predict_risk import predict_portfolio_risk
 
 # Directory containing all model files (unchanged)
-MODELS_DIR = './models/portfolio'
+MODELS_DIR = './models/specialist'
 # Number of portfolios to evaluate (0 through 5)
-NUM_PORTFOLIOS = 6
+NUM_PORTFOLIOS = 1
 # Maximum number of worker threads (tune as needed)
 MAX_WORKERS = min(8, os.cpu_count() or 1)
 
@@ -127,8 +127,8 @@ def evaluate_all_models(test_number):
     """
     # Gather model filenames once
     try:
-        model_files = pd.read_excel('filenames.xlsx')['filename'].tolist()
-        # model_files = [f for f in os.listdir(MODELS_DIR) if f.endswith('.pickle.lzma')]
+        # model_files = pd.read_excel('filenames.xlsx')['filename'].tolist()
+        model_files = [f for f in os.listdir(MODELS_DIR) if f.endswith('.pickle.lzma')]
     except FileNotFoundError:
         print(f"Error: models directory '{MODELS_DIR}' not found.")
         return
